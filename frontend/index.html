@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97757' stroke-width='2'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'/><path d='M8 14h2l2-3 2 6 2-3h2'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FloodPulse — Probabilistic Flood Forecasting & Road Impact</title>
+    <meta name="description" content="Probabilistic flood forecasting and road-network impact intelligence platform for emergency responders and hydrological resilience." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet" />
+  </head>
+  <body class="bg-cream-bg text-ink-primary font-sans antialiased selection:bg-terracotta-subtle selection:text-ink-primary min-h-screen">
+    <!-- 6px dark brown bar fixed at very top edge -->
+    <div class="fixed top-0 left-0 right-0 h-[6px] bg-brand-topbar z-50 pointer-events-none" aria-hidden="true"></div>
+    <div id="root" class="min-h-screen pt-[6px]"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

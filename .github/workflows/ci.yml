@@ -36,7 +36,7 @@ jobs:
 
       - name: Run MyPy Type Check
         run: |
-          mypy src tests
+          mypy src tests scripts
 
       - name: Run PyTest with Coverage
         run: |

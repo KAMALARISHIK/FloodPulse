@@ -1,5 +1,11 @@
 # FloodPulse: Probabilistic Flood-Forecasting & Road-Impact Platform
 
+[![CI](https://github.com/KAMALARISHIK/FloodPulse/actions/workflows/ci.yml/badge.svg)](https://github.com/KAMALARISHIK/FloodPulse/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python: 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](pyproject.toml)
+[![Code Style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Type Checked: mypy](https://img.shields.io/badge/type_checked-mypy-blue.svg)](https://github.com/python/mypy)
+
 > **Status: In Development (Phase 1 Completed)**  
 > *Notice: This repository is in active development. Benchmarks, streamflow metrics, and inundation layers are strictly evaluated on empirical splits. No synthetic or placeholder performance figures are published.*
 

@@ -1,0 +1,45 @@
+# Model configuration parameters for FloodPulse
+
+streamflow_model:
+  type: "MultiBasinLSTM"
+  hidden_size: 128
+  num_layers: 2
+  dropout: 0.2
+  seq_length: 365 # 1 year lookback for soil moisture & baseflow memory
+  quantiles: [0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95]
+  learning_rate: 0.001
+  batch_size: 64
+  epochs: 50
+  early_stopping_patience: 10
+  dynamic_inputs:
+    - "precipitation_mm"
+    - "temp_min_c"
+    - "temp_max_c"
+    - "solar_radiation_w_m2"
+    - "relative_humidity_pct"
+    - "wind_speed_m_s"
+    - "pet_mm"
+    - "soil_moisture_m3_m3"
+  static_attributes:
+    - "drainage_area_sqkm"
+    - "mean_elevation_m"
+    - "mean_slope_pct"
+    - "sand_fraction"
+    - "clay_fraction"
+    - "aridity_index"
+
+terrain_susceptibility_model:
+  type: "RandomForestOrXGBoost"
+  resolution_meters: 30
+  features:
+    - "hand" # Height Above Nearest Drainage
+    - "slope_deg"
+    - "elevation_m"
+    - "distance_to_stream_m"
+    - "twi" # Topographic Wetness Index
+    - "drainage_density"
+
+road_closure_model:
+  type: "GraphClosureEstimator"
+  depth_threshold_low_risk_m: 0.15 # Passable for large emergency vehicles
+  depth_threshold_closure_m: 0.30   # Critical impassability threshold

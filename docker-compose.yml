@@ -1,0 +1,55 @@
+services:
+  postgis:
+    image: postgis/postgis:16-3.4
+    container_name: floodpulse-postgis
+    environment:
+      POSTGRES_USER: floodpulse
+      POSTGRES_PASSWORD: floodpulse_dev_password
+      POSTGRES_DB: floodpulse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U floodpulse -d floodpulse"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.14.1
+    container_name: floodpulse-mlflow
+    ports:
+      - "5000:5000"
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:///mlflow.db
+      --default-artifact-root /mlflow-artifacts
+      --host 0.0.0.0
+      --port 5000
+    volumes:
+      - mlflow_data:/mlflow-artifacts
+      - ./data/mlflow.db:/mlflow.db
+
+  api:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.api
+    container_name: floodpulse-api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://floodpulse:floodpulse_dev_password@postgis:5432/floodpulse
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    depends_on:
+      postgis:
+        condition: service_healthy
+      mlflow:
+        condition: service_started
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+
+volumes:
+  postgis_data:
+  mlflow_data:

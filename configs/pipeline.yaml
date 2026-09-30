@@ -1,0 +1,28 @@
+# Pipeline and execution configurations
+
+paths:
+  data_raw_dir: "data/raw"
+  data_processed_dir: "data/processed"
+  models_dir: "artifacts/models"
+  outputs_dir: "artifacts/outputs"
+
+splits:
+  policy: "chronological_and_basin_holdout"
+  chronological:
+    train_start: "1980-01-01"
+    train_end: "2005-12-31"
+    val_start: "2006-01-01"
+    val_end: "2012-12-31"
+    test_start: "2013-01-01"
+    test_end: "2020-12-31"
+
+data_sources:
+  caravan:
+    zenodo_doi: "10.5281/zenodo.6578598"
+    official_url: "https://zenodo.org/records/6578598"
+    license: "CC-BY-4.0"
+  camels_ind:
+    zenodo_doi: "10.5281/zenodo.14005378"
+    official_url: "https://zenodo.org/records/14005378"
+    license: "CC-BY-4.0"
+    access_right: "Restricted (Requires free Zenodo access request per author policy)"

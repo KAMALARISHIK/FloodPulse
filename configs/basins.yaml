@@ -1,0 +1,47 @@
+# Basin configurations for FloodPulse streamflow and flood inundation modeling
+
+study_basins:
+  # Candidate Basin 1: Godavari Basin (Pranhita / Lower Godavari sub-basin)
+  - basin_id: "camels_ind_01"
+    name: "Godavari_Perur"
+    river: "Godavari"
+    major_basin: "Godavari"
+    state: "Telangana / Maharashtra"
+    gauge_station: "Perur"
+    drainage_area_sqkm: 26820.0
+    latitude: 18.55
+    longitude: 80.37
+    streamflow_observed: true
+    record_period: "1980-2020"
+    target_urban_area: "Bhadrachalam / Godavari Corridor"
+
+  # Candidate Basin 2: Mahanadi Basin (Hirakud / Tikarpara sub-basin)
+  - basin_id: "camels_ind_02"
+    name: "Mahanadi_Tikarpara"
+    river: "Mahanadi"
+    major_basin: "Mahanadi"
+    state: "Odisha"
+    gauge_station: "Tikarpara"
+    drainage_area_sqkm: 124450.0
+    latitude: 20.60
+    longitude: 84.97
+    streamflow_observed: true
+    record_period: "1980-2020"
+    target_urban_area: "Cuttack / Bhubaneswar"
+
+  # Candidate Basin 3: Cauvery Basin (Lower Cauvery / Musiri)
+  - basin_id: "camels_ind_03"
+    name: "Cauvery_Musiri"
+    river: "Cauvery"
+    major_basin: "Cauvery"
+    state: "Tamil Nadu"
+    gauge_station: "Musiri"
+    drainage_area_sqkm: 67500.0
+    latitude: 10.94
+    longitude: 78.44
+    streamflow_observed: true
+    record_period: "1980-2020"
+    target_urban_area: "Tiruchirappalli (Trichy)"
+
+holdout_basins_evaluation:
+  - "camels_ind_03" # Used for hold-out spatial generalization tests

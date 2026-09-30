@@ -40,6 +40,7 @@ dev = [
     "mypy>=1.10.0",
     "types-PyYAML>=6.0.12",
     "types-requests>=2.31.0",
+    "pandas-stubs>=2.2.0",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -67,7 +68,6 @@ ignore = [
 known-first-party = ["floodpulse"]
 
 [tool.mypy]
-python_version = "3.11"
 strict = true
 warn_unused_configs = true
 warn_redundant_casts = true
